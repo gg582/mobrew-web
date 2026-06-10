@@ -1,0 +1,9 @@
+services:
+  mobrew-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "25555:80"
+    container_name: mobrew-web
+    restart: unless-stopped
