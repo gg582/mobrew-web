@@ -40,7 +40,8 @@ function isValidLog(log: unknown): log is BrewLogEntry {
 export default function BrewLogPage() {
   const navigate = useNavigate();
   const [, forceUpdate] = useState(0);
-  const { logs, loading, loadLogs, updateLog, deleteLog } = useBrewLogStore();
+  const { logs: rawLogs, loading, loadLogs, updateLog, deleteLog } = useBrewLogStore();
+  const logs = Array.isArray(rawLogs) ? rawLogs : [];
 
   const [teaTypeFilter, setTeaTypeFilter] = useState<string>('');
   const [minRating, setMinRating] = useState<string>('');
@@ -84,8 +85,9 @@ export default function BrewLogPage() {
     const fromTs = toStartOfDayTimestamp(dateFrom);
     const toTs = toEndOfDayTimestamp(dateTo);
 
-    return [...logs]
+    return logs
       .filter(isValidLog)
+      .slice()
       .sort((a, b) => b.timestamp - a.timestamp)
       .filter((log) => {
         if (teaTypeNum !== null && log.teaType !== teaTypeNum) return false;

@@ -130,6 +130,17 @@ export const useBrewLogStore = create<BrewLogStore>()(
         logs: state.logs,
         filters: state.filters,
       }),
+      merge: (persistedState, currentState) => {
+        const ps = persistedState as Partial<BrewLogStore>;
+        return {
+          ...currentState,
+          logs: Array.isArray(ps.logs) ? ps.logs : currentState.logs,
+          filters:
+            ps.filters && typeof ps.filters === 'object'
+              ? (ps.filters as BrewLogFilters)
+              : currentState.filters,
+        };
+      },
     }
   )
 );
