@@ -1,7 +1,7 @@
 /* global caches, clients, fetch, self */
 
-const CACHE_NAME = 'mobrew-shell-v1';
-const ASSET_CACHE = 'mobrew-assets-v1';
+const CACHE_NAME = 'mobrew-shell-v2';
+const ASSET_CACHE = 'mobrew-assets-v2';
 
 const SHELL_FILES = [
   '/',

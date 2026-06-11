@@ -27,6 +27,16 @@ function toEndOfDayTimestamp(dateStr: string): number | null {
   return Number.isNaN(d.getTime()) ? null : d.getTime();
 }
 
+function isValidLog(log: unknown): log is BrewLogEntry {
+  if (!log || typeof log !== 'object') return false;
+  const l = log as Partial<BrewLogEntry>;
+  return (
+    typeof l.id === 'string' &&
+    typeof l.teaName === 'string' &&
+    typeof l.teaType === 'number'
+  );
+}
+
 export default function BrewLogPage() {
   const navigate = useNavigate();
   const [, forceUpdate] = useState(0);
@@ -75,6 +85,7 @@ export default function BrewLogPage() {
     const toTs = toEndOfDayTimestamp(dateTo);
 
     return [...logs]
+      .filter(isValidLog)
       .sort((a, b) => b.timestamp - a.timestamp)
       .filter((log) => {
         if (teaTypeNum !== null && log.teaType !== teaTypeNum) return false;

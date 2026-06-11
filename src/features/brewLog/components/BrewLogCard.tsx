@@ -75,6 +75,22 @@ interface BrewLogCardProps {
   onDelete: (id: string) => void;
 }
 
+const DEFAULT_PARAMS = {
+  temperature: 0,
+  leafMass: 0,
+  waterVolume: 0,
+  steepTimeSec: 0,
+};
+
+const DEFAULT_COMPOSITION = {
+  catechin: 0,
+  theanine: 0,
+  caffeine: 0,
+  pectin: 0,
+  polysaccharide: 0,
+  aroma: 0,
+};
+
 export function BrewLogCard({
   log,
   notesDraft,
@@ -86,26 +102,33 @@ export function BrewLogCard({
   onReuse,
   onDelete,
 }: BrewLogCardProps) {
+  const parameters = { ...DEFAULT_PARAMS, ...log.parameters };
+  const composition = { ...DEFAULT_COMPOSITION, ...log.composition };
+  const balanceScore = typeof log.balanceScore === 'number' ? log.balanceScore : 0;
+  const teaName = log.teaName || 'Unknown Tea';
+  const timestamp = typeof log.timestamp === 'number' ? log.timestamp : 0;
+  const teaType = typeof log.teaType === 'number' ? log.teaType : 0;
+
   const params = [
     {
       icon: Thermometer,
       label: i18n.t('labelTemperature'),
-      value: `${log.parameters.temperature}°C`,
+      value: `${parameters.temperature}°C`,
     },
     {
       icon: Clock,
       label: i18n.t('brewTime'),
-      value: formatSteepTime(log.parameters.steepTimeSec),
+      value: formatSteepTime(parameters.steepTimeSec),
     },
     {
       icon: Scale,
       label: `${i18n.t('labelLeafMass')} / ${i18n.t('labelWaterVolume')}`,
-      value: `${log.parameters.leafMass}g / ${log.parameters.waterVolume}ml`,
+      value: `${parameters.leafMass}g / ${parameters.waterVolume}ml`,
     },
     {
       icon: FlaskConical,
       label: 'Ratio',
-      value: formatRatio(log.parameters.leafMass, log.parameters.waterVolume),
+      value: formatRatio(parameters.leafMass, parameters.waterVolume),
     },
   ];
 
@@ -115,13 +138,13 @@ export function BrewLogCard({
       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 min-w-0">
         <div className="min-w-0">
           <h3 className="text-lg font-semibold text-slate-100 truncate break-words">
-            {log.teaName}
+            {teaName}
           </h3>
           <div className="flex flex-wrap items-center gap-2 mt-1 text-xs text-slate-400">
             <span className="px-2 py-0.5 rounded-full bg-tea-green/10 text-tea-green border border-tea-green/20">
-              {i18n.t(i18n.teaType(log.teaType))}
+              {i18n.t(i18n.teaType(teaType))}
             </span>
-            <span>{format(log.timestamp, 'PPP p')}</span>
+            <span>{timestamp ? format(timestamp, 'PPP p') : '-'}</span>
           </div>
         </div>
         <div className="flex items-center gap-2 shrink-0">
@@ -158,7 +181,7 @@ export function BrewLogCard({
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
           {COMPOSITION_KEYS.map(({ key, label }) => {
-            const val = log.composition[key];
+            const val = composition[key];
             return (
               <div
                 key={key}
@@ -197,7 +220,7 @@ export function BrewLogCard({
             Balance
           </span>
           <span className="text-sm font-semibold text-tea-green">
-            {log.balanceScore.toFixed(1)}
+            {balanceScore.toFixed(1)}
           </span>
         </div>
 

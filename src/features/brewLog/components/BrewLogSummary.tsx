@@ -12,15 +12,22 @@ export function BrewLogSummary({ logs }: BrewLogSummaryProps) {
   const stats = useMemo(() => {
     const total = logs.length;
     const avgRating =
-      total > 0 ? logs.reduce((sum, l) => sum + l.rating, 0) / total : 0;
+      total > 0
+        ? logs.reduce((sum, l) => sum + (typeof l.rating === 'number' ? l.rating : 0), 0) / total
+        : 0;
     const avgBalance =
       total > 0
-        ? logs.reduce((sum, l) => sum + l.balanceScore, 0) / total
+        ? logs.reduce(
+            (sum, l) => sum + (typeof l.balanceScore === 'number' ? l.balanceScore : 0),
+            0
+          ) / total
         : 0;
 
     const typeCounts = new Map<number, number>();
     logs.forEach((l) => {
-      typeCounts.set(l.teaType, (typeCounts.get(l.teaType) ?? 0) + 1);
+      if (typeof l.teaType === 'number') {
+        typeCounts.set(l.teaType, (typeCounts.get(l.teaType) ?? 0) + 1);
+      }
     });
     let mostBrewedType: number | null = null;
     let maxCount = 0;
