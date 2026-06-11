@@ -80,7 +80,7 @@ export default function AppLayout() {
             ))}
           </div>
 
-          <div className="hidden lg:flex items-center gap-2">
+          <div className="hidden xl:flex items-center gap-2">
             <div className="flex items-center gap-1">
               {i18n.getAvailableLocales().map((loc) => (
                 <button
@@ -122,7 +122,7 @@ export default function AppLayout() {
           </div>
 
           <button
-            className="lg:hidden p-2 rounded-lg hover:bg-white/5 text-slate-300"
+            className="xl:hidden p-2 rounded-lg hover:bg-white/5 text-slate-300"
             onClick={() => setMenuOpen((o) => !o)}
             aria-label="Toggle menu"
           >
@@ -131,7 +131,7 @@ export default function AppLayout() {
         </div>
 
         {menuOpen && (
-          <div className="lg:hidden border-t border-white/10 px-4 py-3 space-y-1">
+          <div className="xl:hidden border-t border-white/10 px-4 py-3 space-y-1">
             {navItems.map((item) => (
               <NavLink
                 key={item.to}

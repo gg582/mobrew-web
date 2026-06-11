@@ -68,7 +68,7 @@ export type TranslationKey =
   // Auth
   | 'authEmail' | 'authPassword' | 'authUsername' | 'authLogin' | 'authRegister' | 'authGuestMode' | 'authMigrateData' | 'authConfirmMigrateTitle' | 'authConfirmMigrateDesc' | 'authMigrationSuccess'
   // BrewLog
-  | 'brewLogTitle' | 'brewLogExportCsv' | 'brewLogExportPdf' | 'brewLogFilterType' | 'brewLogFilterAll' | 'brewLogFilterRating' | 'brewLogFilterDate' | 'brewLogSearch' | 'loading' | 'brewLogEmpty' | 'brewLogNotesPlaceholder' | 'brewLogComposition' | 'brewLogReuseParams' | 'brewLogDelete' | 'brewLogAddNote' | 'brewLogRating'
+  | 'brewLogTitle' | 'brewLogExportCsv' | 'brewLogExportPdf' | 'brewLogFilterType' | 'brewLogFilterAll' | 'brewLogFilterRating' | 'brewLogFilterDate' | 'brewLogSearch' | 'loading' | 'brewLogEmpty' | 'brewLogNotesPlaceholder' | 'brewLogComposition' | 'brewLogReuseParams' | 'brewLogDelete' | 'brewLogAddNote' | 'brewLogRating' | 'brewLogSummaryTitle' | 'brewLogTotalLogs' | 'brewLogAverageRating' | 'brewLogAverageBalance' | 'brewLogMostBrewed' | 'brewLogToggleFilters' | 'brewLogClearFilters' | 'brewLogNoNotes'
   // Actions
   | 'confirm' | 'delete' | 'edit' | 'errorGeneric' | 'apply'
   // Timer
