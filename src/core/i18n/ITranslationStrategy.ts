@@ -81,7 +81,7 @@ export type TranslationKey =
   // Community
   | 'communityTitle' | 'communitySearch' | 'communitySortRecent' | 'communitySortUpvoted' | 'communitySortType' | 'communityNoRecipes' | 'communityUpvotes' | 'communityImport' | 'share'
   // Curve
-  | 'curveTitle' | 'curveNew' | 'curveSaved' | 'curveNoSaved' | 'curveName' | 'curveDuration' | 'curveTotalDuration' | 'curvePhase' | 'curvePhases' | 'curveAddPhase' | 'curveTemp' | 'curveWaterAdd' | 'curveTargetCurve' | 'curveSave' | 'curveLoad' | 'curveDeleted' | 'curveSavedLimit' | 'curveMaxPhases'
+  | 'curveTitle' | 'curveNew' | 'curveSaved' | 'curveNoSaved' | 'curveName' | 'curveDuration' | 'curveTotalDuration' | 'curvePhase' | 'curveAddPhase' | 'curveTemp' | 'curveWaterAdd' | 'curveTargetCurve' | 'curveSave' | 'curveLoad' | 'curveDeleted' | 'curveSavedLimit' | 'curveMaxPhases'
   // Trophy
   | 'trophyTitle' | 'trophyLocked' | 'trophyProgress' | 'trophyArchetype'
   // Recipe

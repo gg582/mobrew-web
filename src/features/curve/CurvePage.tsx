@@ -261,7 +261,7 @@ export default function CurvePage() {
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-medium text-glow">{i18n.t('curveTargetCurve')}</h3>
               <div className="text-xs text-slate-400">
-                {i18n.t('curveTotalDuration')}: {totalTime}s
+                {i18n.t('curveTotalDuration')}: {totalTime}
               </div>
             </div>
 
@@ -354,7 +354,7 @@ export default function CurvePage() {
 
           <GlassCard hover={false}>
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-medium text-glow">{i18n.t('curvePhases')}</h3>
+              <h3 className="text-lg font-medium text-glow">{i18n.t('curvePhase')}</h3>
               <button
                 onClick={handleAddPhase}
                 disabled={atPhaseLimit}
@@ -384,7 +384,7 @@ export default function CurvePage() {
                   <div className="sm:col-span-1 text-xs text-slate-400 font-mono">{idx + 1}</div>
                   <div className="sm:col-span-3">
                     <label className="block text-xs text-slate-400 uppercase tracking-wider mb-1">
-                      {i18n.t('curveDuration')} (s)
+                      {i18n.t('curveDuration')}
                     </label>
                     <input
                       type="number"
@@ -396,7 +396,7 @@ export default function CurvePage() {
                   </div>
                   <div className="sm:col-span-3">
                     <label className="block text-xs text-slate-400 uppercase tracking-wider mb-1">
-                      {i18n.t('curveTemp')} (°C)
+                      {i18n.t('curveTemp')}
                     </label>
                     <input
                       type="number"
@@ -409,7 +409,7 @@ export default function CurvePage() {
                   </div>
                   <div className="sm:col-span-3">
                     <label className="block text-xs text-slate-400 uppercase tracking-wider mb-1">
-                      {i18n.t('curveWaterAdd')} (ml)
+                      {i18n.t('curveWaterAdd')}
                     </label>
                     <input
                       type="number"
@@ -522,7 +522,7 @@ export default function CurvePage() {
                       <div className="font-medium truncate">{curve.name}</div>
                       <div className="text-xs text-slate-400">
                         {i18n.t(i18n.teaType(curve.teaType))} · {totalDuration(curve.phases)}s ·{' '}
-                        {curve.phases.length} {i18n.t('curvePhases').toLowerCase()}
+                        {curve.phases.length} {i18n.t('curvePhase')}
                       </div>
                     </div>
                     <div className="flex items-center gap-1 ml-2">
