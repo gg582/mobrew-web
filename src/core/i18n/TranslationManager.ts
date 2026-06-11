@@ -32,7 +32,7 @@ export class TranslationManager {
     return TranslationManager.instance;
   }
 
-  t(key: TranslationKey): string {
+  t(key: TranslationKey | string): string {
     return this.current.translate(key);
   }
 

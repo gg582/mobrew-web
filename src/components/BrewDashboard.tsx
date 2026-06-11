@@ -7,6 +7,7 @@ import { GlassCard } from './ui/GlassCard';
 import { LeafVisualizer } from './LeafVisualizer';
 import { LeachingBox } from './LeachingBox';
 import { formatNumber } from '@/lib/utils';
+import PostBrewPanel from '@/features/calc/PostBrewPanel';
 import {
   Thermometer, Droplets, Gauge, Activity,
   Flower2, Coffee, AlertCircle, Wind, Sparkles,
@@ -194,6 +195,15 @@ export function BrewDashboard() {
         )}
       </AnimatePresence>
 
+      {/* Post-brew actions */}
+      <AnimatePresence>
+        {(isComplete || isExhausted) && (
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
+            <PostBrewPanel onReset={stopBrewing} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Controls */}
       <div className="flex items-center justify-center gap-3 pt-2 flex-wrap">
         {snapshot.cycleActive ? (
@@ -213,7 +223,7 @@ export function BrewDashboard() {
       {/* Next Infusion Form */}
       <AnimatePresence>
         {showNextForm && (
-          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="glass-strong rounded-2xl p-6 max-w-md mx-auto space-y-4">
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="glass-strong rounded-2xl p-4 sm:p-6 max-w-md mx-auto space-y-4">
             <h4 className="text-lg font-semibold text-center">{i18n.t('prepareNextInfusion')}</h4>
             <div className="space-y-3">
               <div>

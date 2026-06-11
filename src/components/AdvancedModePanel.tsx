@@ -4,6 +4,7 @@ import { TeaType, VesselType, BoilMethod, UnitSystem } from '@/domain/enums';
 import { i18n } from '@/core/i18n/TranslationManager';
 import { GlassCard } from './ui/GlassCard';
 import { Settings, ChevronRight } from 'lucide-react';
+import { getAdvancedPrefill, clearAdvancedPrefill } from '@/services/advancedPrefill';
 
 interface AdvancedModePanelProps {
   onStart: () => void;
@@ -33,6 +34,24 @@ export function AdvancedModePanel({ onStart }: AdvancedModePanelProps) {
 
   useEffect(() => {
     const unsub = i18n.subscribe(() => forceUpdate((n) => n + 1));
+    const prefill = getAdvancedPrefill();
+    if (prefill) {
+      setConfig((prev) => ({
+        ...prev,
+        teaType: prefill.teaType ?? prev.teaType,
+        vessel: prefill.vessel ?? prev.vessel,
+        currentTemp: prefill.temperature ?? prev.currentTemp,
+        leafMass: prefill.leafMass ?? prev.leafMass,
+        waterVolumeMl: prefill.waterVolume ?? prev.waterVolumeMl,
+        numInfusions: prefill.steepCount ?? prev.numInfusions,
+        tds: prefill.tds ?? prev.tds,
+        altitudeM: prefill.altitude ?? prev.altitudeM,
+        leafWidth: prefill.leafSize ?? prev.leafWidth,
+        leafHeight: prefill.leafSize ?? prev.leafHeight,
+        boilMethod: prefill.boilMethod ?? prev.boilMethod,
+      }));
+      clearAdvancedPrefill();
+    }
     return unsub;
   }, []);
 
