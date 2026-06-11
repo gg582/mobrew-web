@@ -60,11 +60,36 @@ export type TranslationKey =
   | 'tagRaw' | 'tagAging' | 'tagRipe' | 'tagEarth' | 'tagSeven' | 'tagCake' | 'tagTraditional' | 'tagBowl' | 'tagCompact' | 'tagAged'
   | 'tagRoyal' | 'tagBamboo' | 'tagYak' | 'tagSalt' | 'tagEnergy' | 'tagMilk' | 'tagStreet'
   // Time hints
-  | 'time30sec' | 'time20to30' | 'time20to40' | 'time30to60' | 'time1min' | 'time1to1h30' | 'time1to2min' | 'time2min' | 'time2to2h30' | 'time2to3min' | 'time3min' | 'time3to4min' | 'time3to5min' | 'time5min' | 'time5to10min';
+  | 'time30sec' | 'time20to30' | 'time20to40' | 'time30to60' | 'time1min' | 'time1to1h30' | 'time1to2min' | 'time2min' | 'time2to2h30' | 'time2to3min' | 'time3min' | 'time3to4min' | 'time3to5min' | 'time5min' | 'time5to10min'
+  // Navigation
+  | 'navHome' | 'navBrewLog' | 'navInventory' | 'navTimer' | 'navPresets' | 'navTrophies' | 'navCurve' | 'navCommunity' | 'navSignIn' | 'navSignOut' | 'navSignUp'
+  // Home & Common
+  | 'homeGuestTitle' | 'homeGuestDesc' | 'homeGuestCta' | 'homeTools' | 'presetsQuickStart' | 'yes' | 'no' | 'close'
+  // Auth
+  | 'authEmail' | 'authPassword' | 'authUsername' | 'authLogin' | 'authRegister' | 'authGuestMode' | 'authMigrateData' | 'authConfirmMigrateTitle' | 'authConfirmMigrateDesc' | 'authMigrationSuccess'
+  // BrewLog
+  | 'brewLogTitle' | 'brewLogExportCsv' | 'brewLogExportPdf' | 'brewLogFilterRating' | 'brewLogFilterDate' | 'brewLogSearch' | 'loading' | 'brewLogEmpty' | 'brewLogNotesPlaceholder' | 'brewLogComposition' | 'brewLogReuseParams' | 'brewLogDelete' | 'brewLogAddNote' | 'brewLogRating'
+  // Actions
+  | 'confirm' | 'delete' | 'edit' | 'errorGeneric' | 'apply'
+  // Timer
+  | 'timerTitle' | 'timerPreset2m' | 'timerPreset3m' | 'timerPreset4m' | 'timerPreset5m' | 'timerPresetCustom' | 'timerTeaLabel' | 'timerTemperatureRef' | 'timerChime' | 'timerMute' | 'timerChime1' | 'timerChime2' | 'timerChime3' | 'timerStart' | 'timerPause' | 'timerReset' | 'timerComplete'
+  // Presets
+  | 'presetsTitle' | 'presetsMy' | 'presetsCommunity' | 'presetsDefault' | 'presetsSaveCurrent' | 'presetsApply' | 'presetsShare' | 'presetsImport' | 'presetsSearch' | 'presetsNamePlaceholder' | 'presetsLimit'
+  // Inventory
+  | 'inventoryTitle' | 'inventoryAddTea' | 'inventoryName' | 'inventoryType' | 'inventoryQty' | 'inventoryCost' | 'inventoryVendor' | 'inventoryPurchased' | 'inventoryStorage' | 'inventoryThreshold' | 'inventoryLowStock' | 'inventoryEmpty' | 'inventoryBrewThis' | 'inventoryDelete' | 'inventoryEdit' | 'inventoryLogPast'
+  | 'storageSealed' | 'storageOpened' | 'storageRefrigerated' | 'storageFrozen'
+  // Community
+  | 'communityTitle' | 'communitySearch' | 'communitySortRecent' | 'communitySortUpvoted' | 'communitySortType' | 'communityNoRecipes' | 'communityUpvotes' | 'communityImport' | 'share'
+  // Curve
+  | 'curveTitle' | 'curveNew' | 'curveSaved' | 'curveNoSaved' | 'curveName' | 'curveDuration' | 'curveTotalDuration' | 'curvePhase' | 'curveAddPhase' | 'curveTemp' | 'curveWaterAdd' | 'curveTargetCurve' | 'curveSave' | 'curveLoad' | 'curveDeleted' | 'curveSavedLimit' | 'curveMaxPhases'
+  // Trophy
+  | 'trophyTitle' | 'trophyLocked' | 'trophyProgress' | 'trophyArchetype'
+  // Recipe
+  | 'recipePreviewTitle' | 'recipePreviewApply' | 'recipePreviewCancel' | 'recipeCopied' | 'recipeImportPlaceholder' | 'import';
 
 export interface ITranslationStrategy {
   readonly locale: string;
   readonly displayName: string;
-  translate(key: TranslationKey): string;
+  translate(key: TranslationKey | string): string;
   translateRaw(key: string): string;
 }

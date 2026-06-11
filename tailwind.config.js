@@ -25,6 +25,10 @@ export default {
           tibetan: '#c2410c',
         }
       },
+      fontFamily: {
+        sans: ['Inter', 'Noto Sans', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
+      },
       backdropBlur: {
         xs: '2px',
       },
