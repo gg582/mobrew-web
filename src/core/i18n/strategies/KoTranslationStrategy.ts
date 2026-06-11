@@ -372,6 +372,8 @@ const DICT: Record<string, string> = {
   brewLogTitle: '추출 기록',
   brewLogExportCsv: 'CSV 낳기',
   brewLogExportPdf: 'PDF 낳기',
+  brewLogFilterType: '필터',
+  brewLogFilterAll: '전체',
   brewLogFilterRating: '별점',
   brewLogFilterDate: '날짜',
   brewLogSearch: '검색',

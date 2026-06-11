@@ -372,6 +372,8 @@ const DICT: Record<string, string> = {
   brewLogTitle: '冲泡记录',
   brewLogExportCsv: '导出 CSV',
   brewLogExportPdf: '导出 PDF',
+  brewLogFilterType: '筛选',
+  brewLogFilterAll: '全部',
   brewLogFilterRating: '评分',
   brewLogFilterDate: '日期',
   brewLogSearch: '搜索',

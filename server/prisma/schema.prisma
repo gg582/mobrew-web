@@ -1,0 +1,181 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  username  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  brewLogs    BrewLog[]
+  inventory   TeaInventoryItem[]
+  presets     UserPreset[]
+  curves      CustomCurve[]
+  badgeStates UserBadge[]
+  settings    UserSetting?
+  votes       Vote[]
+}
+
+model BrewLog {
+  id               String   @id @default(uuid())
+  userId           String?
+  timestamp        DateTime @default(now())
+  teaName          String
+  teaType          Int
+  temperature      Float
+  steepTimeSec     Float
+  leafMass         Float
+  waterVolume      Float
+  steepCount       Int
+  tds              Float
+  altitude         Float
+  leafSize         Float
+  vesselType       Int
+  boilMethod       Int
+  rating           Int
+  notes            String
+  catechin         Float
+  theanine         Float
+  caffeine         Float
+  pectin           Float
+  polysaccharide   Float
+  aroma            Float
+  clarityIndex     Float
+  balanceScore     Float
+  extractionYield  Float
+  strength         String
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, timestamp])
+}
+
+model TeaInventoryItem {
+  id                String   @id @default(uuid())
+  userId            String?
+  name              String
+  teaType           Int
+  purchaseDate      String
+  quantityGrams     Float
+  storageCondition  String
+  vendor            String?
+  cost              Float?
+  lowStockThreshold Float    @default(10)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model UserPreset {
+  id            String   @id @default(uuid())
+  userId        String?
+  name          String
+  teaType       Int
+  temperature   Float
+  leafMass      Float
+  waterVolume   Float
+  steepCount    Int
+  tds           Float
+  altitude      Float
+  leafSize      Float
+  vesselType    Int
+  boilMethod    Int
+  isDefault     Boolean  @default(false)
+  isCommunity   Boolean  @default(false)
+  upvotes       Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  user         User?           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  communityRef CommunityRecipe?
+
+  @@index([userId])
+}
+
+model CustomCurve {
+  id        String   @id @default(uuid())
+  userId    String?
+  name      String
+  teaType   Int
+  phases    String // JSON
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model BadgeDefinition {
+  id          String   @id @default(uuid())
+  badgeId     String   @unique
+  icon        String
+  nameKey     String
+  descKey     String
+  category    String
+  condition   String
+  maxProgress Int
+  createdAt   DateTime @default(now())
+}
+
+model UserBadge {
+  id        String    @id @default(uuid())
+  userId    String
+  badgeId   String
+  earnedAt  DateTime?
+  progress  Int       @default(0)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, badgeId])
+  @@index([userId])
+}
+
+model UserSetting {
+  id                String  @id @default(uuid())
+  userId            String  @unique
+  language          String  @default("en")
+  timerChime        String  @default("chime1")
+  notifications     Boolean @default(true)
+  lowStockThreshold Float   @default(10)
+
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model CommunityRecipe {
+  id               String @id @default(uuid())
+  presetId         String @unique
+  archetypeBadgeId String
+  upvotes          Int    @default(0)
+  createdAt        DateTime @default(now())
+
+  preset UserPreset @relation(fields: [presetId], references: [id], onDelete: Cascade)
+  votes  Vote[]
+}
+
+model Vote {
+  id        String   @id @default(uuid())
+  userId    String
+  recipeId  String
+  createdAt DateTime @default(now())
+
+  user   User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  recipe CommunityRecipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, recipeId])
+}

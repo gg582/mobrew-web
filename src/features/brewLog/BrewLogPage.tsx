@@ -242,7 +242,7 @@ export default function BrewLogPage() {
               value={teaTypeFilter}
               onChange={(e) => setTeaTypeFilter(e.target.value)}
             >
-              <option value="">{i18n.t('brewLogFilterType')}</option>
+              <option value="">{i18n.t('brewLogFilterAll')}</option>
               {teaTypes.map((t) => (
                 <option key={t} value={t}>
                   {i18n.t(i18n.teaType(t))}
@@ -358,10 +358,10 @@ export default function BrewLogPage() {
               <GlassCard key={log.id} hover={false} className="space-y-3 p-4 sm:p-6">
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
                   <div>
+                    <h3 className="text-lg font-semibold">{log.teaName}</h3>
                     <div className="text-xs text-slate-400">
                       {format(log.timestamp, 'PPP p')}
                     </div>
-                    <h3 className="text-lg font-semibold">{log.teaName}</h3>
                     <div className="text-sm text-tea-green">
                       {i18n.t(i18n.teaType(log.teaType))}
                     </div>

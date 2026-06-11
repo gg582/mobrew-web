@@ -372,6 +372,8 @@ const DICT: Record<string, string> = {
   brewLogTitle: 'Brew Log',
   brewLogExportCsv: 'Export CSV',
   brewLogExportPdf: 'Export PDF',
+  brewLogFilterType: 'Filters',
+  brewLogFilterAll: 'All',
   brewLogFilterRating: 'Rating',
   brewLogFilterDate: 'Date',
   brewLogSearch: 'Search',
