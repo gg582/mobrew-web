@@ -469,6 +469,7 @@ const DICT: Record<string, string> = {
   curveDuration: '継続時間 (秒)',
   curveTotalDuration: '総継続時間',
   curvePhase: 'フェーズ',
+  curvePhases: 'フェーズ',
   curveAddPhase: 'フェーズ追加',
   curveTemp: '温度 (°C)',
   curveWaterAdd: '水量 (ml)',

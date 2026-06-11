@@ -469,6 +469,7 @@ const DICT: Record<string, string> = {
   curveDuration: '지속 시간 (초)',
   curveTotalDuration: '총 지속 시간',
   curvePhase: '단계',
+  curvePhases: '단계',
   curveAddPhase: '단계 추가',
   curveTemp: '온도 (°C)',
   curveWaterAdd: '물 (ml)',
