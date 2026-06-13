@@ -84,6 +84,31 @@ export type TranslationKey =
   | 'curveTitle' | 'curveNew' | 'curveSaved' | 'curveNoSaved' | 'curveName' | 'curveDuration' | 'curveTotalDuration' | 'curvePhase' | 'curveAddPhase' | 'curveTemp' | 'curveWaterAdd' | 'curveTargetCurve' | 'curveSave' | 'curveLoad' | 'curveDeleted' | 'curveSavedLimit' | 'curveMaxPhases'
   // Trophy
   | 'trophyTitle' | 'trophyLocked' | 'trophyProgress' | 'trophyArchetype'
+  | 'trophyActivity' | 'trophyExplorer' | 'trophyPrecision' | 'trophyStreak'
+  // Badges
+  | 'badgeActivityFirstBrew' | 'badgeActivityFirstBrewDesc'
+  | 'badgeActivitySteadyHand' | 'badgeActivitySteadyHandDesc'
+  | 'badgeActivityBrewingRegular' | 'badgeActivityBrewingRegularDesc'
+  | 'badgeActivityMasterBrewer' | 'badgeActivityMasterBrewerDesc'
+  | 'badgeExplorerTeaNovice' | 'badgeExplorerTeaNoviceDesc'
+  | 'badgeExplorerTeaTraveler' | 'badgeExplorerTeaTravelerDesc'
+  | 'badgeExplorerTeaConnoisseur' | 'badgeExplorerTeaConnoisseurDesc'
+  | 'badgeExplorerTempScout' | 'badgeExplorerTempScoutDesc'
+  | 'badgeExplorerTempNomad' | 'badgeExplorerTempNomadDesc'
+  | 'badgeExplorerVesselCurator' | 'badgeExplorerVesselCuratorDesc'
+  | 'badgeExplorerVesselCollector' | 'badgeExplorerVesselCollectorDesc'
+  | 'badgePrecisionPerfectCup' | 'badgePrecisionPerfectCupDesc'
+  | 'badgePrecisionFlawlessJudge' | 'badgePrecisionFlawlessJudgeDesc'
+  | 'badgePrecisionBalancedArtisan' | 'badgePrecisionBalancedArtisanDesc'
+  | 'badgePrecisionHarmonyMaster' | 'badgePrecisionHarmonyMasterDesc'
+  | 'badgeStreakConsistentSipper' | 'badgeStreakConsistentSipperDesc'
+  | 'badgeStreakWeekWarrior' | 'badgeStreakWeekWarriorDesc'
+  | 'badgeStreakMonthlyDevotee' | 'badgeStreakMonthlyDevoteeDesc'
+  | 'badgeArchetypeZephyr' | 'badgeArchetypeZephyrDesc'
+  | 'badgeArchetypeGoldenDrift' | 'badgeArchetypeGoldenDriftDesc'
+  | 'badgeArchetypeObsidian' | 'badgeArchetypeObsidianDesc'
+  | 'badgeArchetypeBlossom' | 'badgeArchetypeBlossomDesc'
+  | 'badgeArchetypeNova' | 'badgeArchetypeNovaDesc'
   // Recipe
   | 'recipePreviewTitle' | 'recipePreviewApply' | 'recipePreviewCancel' | 'recipeCopied' | 'recipeImportPlaceholder' | 'import';
 

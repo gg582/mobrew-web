@@ -29,7 +29,6 @@ import {
 import { i18n } from '@/core/i18n/TranslationManager';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { useBadgeStore } from '@/stores/badgeStore';
-import { BADGE_TEXT_FALLBACK } from '@/services/badgeEngine';
 import { cn } from '@/lib/utils';
 import type { BadgeDefinition, UserBadge } from '@/domain/appTypes';
 import type { TranslationKey } from '@/core/i18n/ITranslationStrategy';
@@ -77,9 +76,7 @@ const ARCHETYPE_AURA: Record<string, string> = {
 };
 
 function tBadge(key: string): string {
-  const translated = i18n.tRaw(key);
-  if (translated !== key) return translated;
-  return BADGE_TEXT_FALLBACK[key] ?? key;
+  return i18n.tRaw(key);
 }
 
 function ArchetypeHero({
